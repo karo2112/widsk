@@ -1,0 +1,5 @@
+E:\STUDIA\SEM8\WIDSK\ApGlosowanie\ApGlosowanie\bin\ApGlosowanie.dll
+E:\STUDIA\SEM8\WIDSK\ApGlosowanie\ApGlosowanie\bin\ApGlosowanie.pdb
+E:\STUDIA\SEM8\WIDSK\ApGlosowanie\ApGlosowanie\obj\Debug\ApGlosowanie.csprojResolveAssemblyReference.cache
+E:\STUDIA\SEM8\WIDSK\ApGlosowanie\ApGlosowanie\obj\Debug\ApGlosowanie.dll
+E:\STUDIA\SEM8\WIDSK\ApGlosowanie\ApGlosowanie\obj\Debug\ApGlosowanie.pdb
