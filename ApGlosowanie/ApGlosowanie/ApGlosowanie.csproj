@@ -59,7 +59,8 @@
       <DependentUpon>dbglosowanie.mdf</DependentUpon>
     </Content>
     <Content Include="default.aspx" />
-    <Content Include="edytor\edycjaAnkiet.aspx" />
+    <Content Include="edytory\edycjaAnkiet.aspx" />
+    <Content Include="edytory\edytorKont.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -84,12 +85,19 @@
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="edytor\edycjaAnkiet.aspx.cs">
+    <Compile Include="edytory\edycjaAnkiet.aspx.cs">
       <DependentUpon>edycjaAnkiet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="edytor\edycjaAnkiet.aspx.designer.cs">
+    <Compile Include="edytory\edycjaAnkiet.aspx.designer.cs">
       <DependentUpon>edycjaAnkiet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="edytory\edytorKont.aspx.cs">
+      <DependentUpon>edytorKont.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="edytory\edytorKont.aspx.designer.cs">
+      <DependentUpon>edytorKont.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
