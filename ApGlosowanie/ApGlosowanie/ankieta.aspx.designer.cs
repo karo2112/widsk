@@ -22,40 +22,40 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// SqlDataSource1 control.
+        /// sql_ds_pytania control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_pytania;
         
         /// <summary>
-        /// SqlDataSource2 control.
+        /// sql_ds_odpowiedzi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource2;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_odpowiedzi;
         
         /// <summary>
-        /// Label1 control.
+        /// lb_tresc_pytania control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lb_tresc_pytania;
         
         /// <summary>
-        /// Label2 control.
+        /// lb_typ_pytania control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lb_typ_pytania;
         
         /// <summary>
         /// RadioButtonList1 control.
@@ -103,13 +103,13 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.WebControls.Button Button3;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// ddl_pytania control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddl_pytania;
         
         /// <summary>
         /// Label3 control.
@@ -121,15 +121,6 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// SqlDataSource3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource3;
-        
-        /// <summary>
         /// bt_skocz control.
         /// </summary>
         /// <remarks>
@@ -137,5 +128,14 @@ namespace ApGlosowanie {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bt_skocz;
+        
+        /// <summary>
+        /// hf_nr_pytania control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hf_nr_pytania;
     }
 }

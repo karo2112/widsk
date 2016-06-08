@@ -31,57 +31,30 @@ namespace ApGlosowanie.edytor {
         protected global::System.Web.UI.WebControls.Table tb_dodawanie_wiersza;
         
         /// <summary>
-        /// lb_login control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_login;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
         
         /// <summary>
-        /// tb_login control.
+        /// sql_ds_uzytkownicy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_login;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_uzytkownicy;
         
         /// <summary>
-        /// lb_haslo control.
+        /// GridView2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_haslo;
-        
-        /// <summary>
-        /// tb_haslo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_haslo;
-        
-        /// <summary>
-        /// bt_dodaj control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt_dodaj;
-        
-        /// <summary>
-        /// Table1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table Table1;
+        protected global::System.Web.UI.WebControls.GridView GridView2;
     }
 }

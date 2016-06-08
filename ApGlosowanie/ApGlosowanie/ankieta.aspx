@@ -17,25 +17,25 @@
 <div>
     <h1>Lista ankiet</h1>
         <br />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [NumerPytania], [Pytanie], [WielWybor], [WymaganaOdp] FROM [Pytania] WHERE ([IdTestu] = @IdTestu)">
+        <asp:SqlDataSource ID="sql_ds_pytania" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [NumerPytania], [Pytanie], [WielWybor], [WymaganaOdp] FROM [Pytania] WHERE ([IdTestu] = @IdTestu) ORDER BY [NumerPytania] ASC">
             <SelectParameters>
                 <asp:QueryStringParameter DefaultValue="1" Name="IdTestu" QueryStringField="nr" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [Tekst], [NumerPytania] FROM [Odpowiedzi] WHERE ([NumerPytania] = @NumerPytania)">
+        <asp:SqlDataSource ID="sql_ds_odpowiedzi" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [Tekst], [NumerOdpowiedzi], [NumerPytania] FROM [Odpowiedzi] WHERE ([NumerPytania] = @NumerPytania) ORDER BY [NumerOdpowiedzi] ASC">
             <SelectParameters>
-                <asp:CookieParameter CookieName="ap" DefaultValue="1" Name="NumerPytania" Type="Int32" />
+                <asp:ControlParameter ControlID="hf_nr_pytania" Name="NumerPytania" PropertyName="Value" Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="lb_tresc_pytania" runat="server" Text="Label"></asp:Label>
         <br />
-        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="lb_typ_pytania" runat="server" Text="Label"></asp:Label>
         <br />
-        <asp:RadioButtonList ID="RadioButtonList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Tekst" DataValueField="Tekst">
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" DataSourceID="sql_ds_odpowiedzi" DataTextField="Tekst" DataValueField="NumerOdpowiedzi">
         </asp:RadioButtonList>
-        <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="Tekst" DataValueField="Tekst">
+        <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="sql_ds_odpowiedzi" DataTextField="Tekst" DataValueField="NumerOdpowiedzi">
         </asp:CheckBoxList>
         <asp:Button ID="Button1" runat="server" Text="Poprzednie pytanie" OnClick="Button1_Click" />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Anuluj wybór" />
@@ -48,16 +48,12 @@
             <td>
 
     <div>
-        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="NumerPytania" DataValueField="NumerPytania" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+        <asp:DropDownList ID="ddl_pytania" runat="server" DataSourceID="sql_ds_pytania" DataTextField="NumerPytania" DataValueField="NumerPytania" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
         </asp:DropDownList>
         <asp:Label ID="Label3" runat="server" Text="0"></asp:Label>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [Tekst] FROM [Odpowiedzi] WHERE ([NumerPytania] = @NumerPytania)">
-            <SelectParameters>
-                <asp:ControlParameter ControlID="DropDownList1" DefaultValue="1" Name="NumerPytania" PropertyName="SelectedValue" Type="Int32" />
-            </SelectParameters>
-        </asp:SqlDataSource>
         <br />
         <asp:Button ID="bt_skocz" runat="server" OnClick="bt_skocz_Click" Text="Przejdź" />
+        <asp:HiddenField ID="hf_nr_pytania" runat="server" Value="1" />
     </div>
 
             </td>

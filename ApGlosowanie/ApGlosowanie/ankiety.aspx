@@ -11,16 +11,16 @@
     <div>
     <h1>Lista ankiet</h1>
         <p>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" EnableModelValidation="True">
+            <asp:GridView ID="gv_ankiety" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sql_ds_ankiety" EnableModelValidation="True" OnSelectedIndexChanged="gv_ankiety_SelectedIndexChanged">
                 <Columns>
+                    <asp:CommandField ShowSelectButton="True" />
+                    <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" Visible="False" />
                     <asp:BoundField DataField="Nazwa" HeaderText="Nazwa" SortExpression="Nazwa" />
-                    <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="Stan" HeaderText="Stan" SortExpression="Stan" Visible="False" />
+                    <asp:BoundField DataField="DataZakonczenia" HeaderText="DataZakonczenia" SortExpression="DataZakonczenia" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [Nazwa], [Id] FROM [Ankiety] WHERE ([Stan] = @Stan)">
-                <SelectParameters>
-                    <asp:Parameter DefaultValue="1" Name="Stan" Type="Int32" />
-                </SelectParameters>
+            <asp:SqlDataSource ID="sql_ds_ankiety" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT a.Id, a.Nazwa, a.DataZakonczenia FROM Ankiety a WHERE GETDATE() <= a.DataZakonczenia AND a.Stan = 1;">
             </asp:SqlDataSource>
         </p>
     </div>

@@ -31,13 +31,49 @@ namespace ApGlosowanie.edytor {
         protected global::System.Web.UI.WebControls.GridView gv_pytania;
         
         /// <summary>
-        /// sql_ds_pytania control.
+        /// tblEdycjaAnkiet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_pytania;
+        protected global::System.Web.UI.WebControls.Table tblEdycjaAnkiet;
+        
+        /// <summary>
+        /// tbl_ankiety control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow tbl_ankiety;
+        
+        /// <summary>
+        /// gv_ankiety control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_ankiety;
+        
+        /// <summary>
+        /// tbl_pytania control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow tbl_pytania;
+        
+        /// <summary>
+        /// tbl_odpowiedzi control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableRow tbl_odpowiedzi;
         
         /// <summary>
         /// gv_odpowiedzi control.
@@ -49,13 +85,13 @@ namespace ApGlosowanie.edytor {
         protected global::System.Web.UI.WebControls.GridView gv_odpowiedzi;
         
         /// <summary>
-        /// gv_ankiety control.
+        /// sql_ds_pytania control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_ankiety;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_pytania;
         
         /// <summary>
         /// sql_ds_ankiety control.
@@ -92,14 +128,5 @@ namespace ApGlosowanie.edytor {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hf_id_pytania;
-        
-        /// <summary>
-        /// XD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField XD;
     }
 }
