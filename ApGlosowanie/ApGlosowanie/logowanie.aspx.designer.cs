@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApGlosowanie.edytor {
+namespace ApGlosowanie {
     
     
-    public partial class edytorKont {
+    public partial class logowanie {
         
         /// <summary>
         /// form1 control.
@@ -22,30 +22,57 @@ namespace ApGlosowanie.edytor {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// tb_dodawanie_wiersza control.
+        /// logon control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table tb_dodawanie_wiersza;
+        protected global::System.Web.UI.WebControls.Table logon;
         
         /// <summary>
-        /// GridView1 control.
+        /// lb_login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label lb_login;
         
         /// <summary>
-        /// sql_ds_uzytkownicy control.
+        /// tb_login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_uzytkownicy;
+        protected global::System.Web.UI.WebControls.TextBox tb_login;
+        
+        /// <summary>
+        /// lb_haslo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_haslo;
+        
+        /// <summary>
+        /// tb_haslo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tb_haslo;
+        
+        /// <summary>
+        /// bt_zaloguj control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bt_zaloguj;
     }
 }

@@ -11,7 +11,7 @@
     <div>
     <h1>Edytor ankiet</h1>
 
-                     <asp:GridView ID="gv_pytania" runat="server" AutoGenerateColumns="False" DataSourceID="sql_ds_pytania" EnableModelValidation="True" OnSelectedIndexChanged="gv_pytania_SelectedIndexChanged">
+                     <asp:GridView ID="gv_pytania" runat="server" AutoGenerateColumns="False" DataSourceID="sql_ds_pytania" EnableModelValidation="True" OnSelectedIndexChanged="gv_pytania_SelectedIndexChanged" ShowFooter="True" OnRowUpdating="gv_pytania_RowUpdating" >
                         <Columns>
                             <asp:TemplateField ShowHeader="False">
                                 <EditItemTemplate>
@@ -24,11 +24,11 @@
                                     &nbsp;<asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Delete" Text="Usuń"></asp:LinkButton>
                                 </ItemTemplate>
                                 <FooterTemplate>
-                                    <asp:Button ID="bt_dodaj_pytanie" runat="server" Text="Dodaj ankietę" OnClick="dodajAnkiete"/>
+                                    <asp:Button ID="bt_dodaj_pytanie" runat="server" Text="Dodaj pytanie" OnClick="dodajPytanie"/>
                                 </FooterTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField HeaderText="Id" SortExpression="Id">
+                            <asp:TemplateField HeaderText="Id" SortExpression="Id" Visible ="false">
                                 <EditItemTemplate>
                                     <asp:Label ID="Label1" runat="server" Text='<%# Eval("Id") %>'></asp:Label>
                                 </EditItemTemplate>
@@ -36,7 +36,7 @@
                                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("Id") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="IdTestu" SortExpression="IdTestu">
+                            <asp:TemplateField HeaderText="IdTestu" SortExpression="IdTestu" Visible="false">
                                 <EditItemTemplate>
                                     <asp:Label ID="Label2" runat="server" Text='<%# Eval("IdTestu") %>'></asp:Label>
                                 </EditItemTemplate>
@@ -46,19 +46,25 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Pytanie" SortExpression="Pytanie">
                                 <EditItemTemplate>
-                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("Pytanie") %>'></asp:Label>
+                                    <asp:TextBox ID="tb_pytanie_e" runat="server" Text='<%# Bind("Pytanie") %>'></asp:TextBox>
                                 </EditItemTemplate>
                                 <ItemTemplate>
                                     <asp:Label ID="Label3" runat="server" Text='<%# Bind("Pytanie") %>'></asp:Label>
                                 </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tb_pytanie_ins" runat="server"></asp:TextBox>
+                                </FooterTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="WielWybor" SortExpression="WielWybor">
                                 <EditItemTemplate>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Eval("WielWybor") %>'></asp:Label>
+                                    <asp:CheckBox ID="chb_wiel_wybor_e" runat="server" Checked='<%# Convert.ToBoolean(Eval("WielWybor")) %>'/>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("WielWybor") %>'></asp:Label>
+                                    <asp:CheckBox ID="chb_wiel_wybor" runat="server" Checked='<%# Convert.ToBoolean(Eval("WielWybor")) %>' Enabled="False" />
                                 </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:CheckBox ID="chb_wiel_wybor_ins" runat="server"/>
+                                </FooterTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="NumerPytania" SortExpression="NumerPytania">
                                 <EditItemTemplate>
@@ -70,10 +76,68 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="WymaganaOdp" SortExpression="WymaganaOdp">
                                 <EditItemTemplate>
-                                    <asp:Label ID="Label6" runat="server" Text='<%# Eval("WymaganaOdp") %>'></asp:Label>
+                                    <asp:CheckBox ID="chb_wym_odp_e" runat="server" Checked='<%# Convert.ToBoolean(Eval("WymaganaOdp")) %>'/>
                                 </EditItemTemplate>
                                 <ItemTemplate>
-                                    <asp:Label ID="Label6" runat="server" Text='<%# Bind("WymaganaOdp") %>'></asp:Label>
+                                    <asp:CheckBox ID="chb_wym_odp" runat="server" Checked='<%# Convert.ToBoolean(Eval("WymaganaOdp")) %>' Enabled="false"/>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:CheckBox ID="chb_wym_odp_ins" runat="server"/>
+                                </FooterTemplate>
+                            </asp:TemplateField>
+                            
+                        </Columns>
+                    </asp:GridView>
+
+                            <asp:GridView ID="gv_odpowiedzi" runat="server" AutoGenerateColumns="False" DataSourceID="sql_ds_odpowiedzi" EnableModelValidation="True" ShowFooter="True">
+                        <Columns>
+                            <asp:TemplateField ShowHeader="False">
+                                <EditItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="True" CommandName="Update" Text="Aktualizuj"></asp:LinkButton>
+                                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Cancel" Text="Anuluj"></asp:LinkButton>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Edit" Text="Edytuj"></asp:LinkButton>
+                                    &nbsp;<asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Select" Text="Wybierz"></asp:LinkButton>
+                                    &nbsp;<asp:LinkButton ID="LinkButton3" runat="server" CausesValidation="False" CommandName="Delete" Text="Usuń"></asp:LinkButton>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:Button ID="bt_dodaj_odpowiedz" runat="server" Text="Dodaj odpowiedź" OnClick="dodajOdpowiedz"/>
+                                </FooterTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="IdPytania" SortExpression="IdPytania" Visible="False">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label12" runat="server" Text='<%# Eval("IdPytania") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("IdPytania") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="NumerPytania" SortExpression="NumerPytania">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("NumerPytania") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label2" runat="server" Text='<%# Bind("NumerPytania") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Tekst" SortExpression="Tekst">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="tb_tekst_e" runat="server" Text='<%# Bind("Tekst") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label3" runat="server" Text='<%# Bind("Tekst") %>'></asp:Label>
+                                </ItemTemplate>
+                                <FooterTemplate>
+                                    <asp:TextBox ID="tb_tekst_ins" runat="server"></asp:TextBox>
+                                </FooterTemplate>
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText="NumerOdpowiedzi" SortExpression="NumerOdpowiedzi">
+                                <EditItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("NumerOdpowiedzi") %>'></asp:Label>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("NumerOdpowiedzi") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -355,22 +419,14 @@
 
             <asp:TableRow ID="tbl_odpowiedzi">
                 <asp:TableCell>
-                    <asp:GridView ID="gv_odpowiedzi" runat="server" AutoGenerateColumns="False" AutoGenerateDeleteButton="True" AutoGenerateEditButton="True" AutoGenerateSelectButton="True" DataKeyNames="Id" DataSourceID="sql_ds_odpowiedzi" EnableModelValidation="True">
-                        <Columns>
-                            <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" SortExpression="Id" />
-                            <asp:BoundField DataField="IdPytania" HeaderText="IdPytania" SortExpression="IdPytania" />
-                            <asp:BoundField DataField="Tekst" HeaderText="Tekst" SortExpression="Tekst" />
-                            <asp:BoundField DataField="LicznikGlosow" HeaderText="LicznikGlosow" SortExpression="LicznikGlosow" />
-                            <asp:BoundField DataField="NumerPytania" HeaderText="NumerPytania" SortExpression="NumerPytania" />
-                        </Columns>
-                    </asp:GridView>
+
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
 
         <asp:SqlDataSource ID="sql_ds_pytania" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT Id, IdTestu, Pytanie, WielWybor, NumerPytania, WymaganaOdp FROM Pytania WHERE ([IdTestu] = @IdTestu)
 UNION ALL
-SELECT -1,-1,'PUSTY, NIE DO EDYCJI',0,0,0 FROM Ankiety HAVING COUNT(*)=0;" UpdateCommand="UPDATE [Pytania] SET [Pytanie] = @Pytanie, [WielWybor] = @WielWybor, [NumerPytania] = @NumerPytania, [WymaganaOdp] = @WymaganaOdp, WHERE [Id] = @Id" DeleteCommand="DELETE FROM [Pytania] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Pytania] ([IdTestu], [Pytanie], [WielWybor], [NumerPytania], [WymaganaOdp]) VALUES (@IdTestu, @Pytanie, @WielWybor, @NumerPytania, @WymaganaOdp)">
+SELECT -1,-1,'PUSTY, NIE DO EDYCJI',0,0,0 FROM Pytania HAVING COUNT(*)=0;" UpdateCommand="UPDATE [Pytania] SET [Pytanie] = @Pytanie, [WielWybor] = @WielWybor, [WymaganaOdp] = @WymaganaOdp WHERE [Id] = @Id" DeleteCommand="DELETE FROM [Pytania] WHERE [Id] = @Id" InsertCommand="INSERT INTO [Pytania] ([IdTestu], [Pytanie], [WielWybor], [NumerPytania], [WymaganaOdp]) VALUES (@IdTestu, @Pytanie, @WielWybor, @NumerPytania, @WymaganaOdp)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="hf_id_ankiety" Name="IdTestu" PropertyName="Value" />
             </SelectParameters>
@@ -387,7 +443,6 @@ SELECT -1,-1,'PUSTY, NIE DO EDYCJI',0,0,0 FROM Ankiety HAVING COUNT(*)=0;" Updat
             <UpdateParameters>
                 <asp:Parameter Name="Pytanie" Type="String" />
                 <asp:Parameter Name="WielWybor" Type="Boolean" />
-                <asp:Parameter Name="NumerPytania" Type="Int32" />
                 <asp:Parameter Name="WymaganaOdp" Type="Boolean" />
                 <asp:Parameter Name="Id" Type="Int32" />
              </UpdateParameters>
@@ -412,13 +467,28 @@ SELECT -1,'PUSTA, NIE DO EDYCJI',0,GETDATE(),0,0 FROM Ankiety HAVING COUNT(*)=0;
             </UpdateParameters>
         </asp:SqlDataSource>
 
-        <asp:SqlDataSource ID="sql_ds_odpowiedzi" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT * FROM [Odpowiedzi] WHERE ([IdPytania] = @IdPytania)">
+        <asp:SqlDataSource ID="sql_ds_odpowiedzi" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" InsertCommand="INSERT INTO [Pytania] ([IdPytania], [NumerPytania], [Tekst], [NumerOdpowiedzi]) VALUES (@IdPytania, @NumerPytania, @Tekst, @NumerOdpowiedzi)" DeleteCommand="DELETE FROM [Odpowiedzi] WHERE [Id] = @Id" UpdateCommand="UPDATE [Odpowiedzi] SET [Tekst] = @Tekst WHERE [Id] = @Id" SelectCommand="SELECT [IdPytania], [NumerPytania], [Tekst], [NumerOdpowiedzi] FROM [Odpowiedzi] WHERE ([IdPytania] = @IdPytania)">
             <SelectParameters>
                 <asp:ControlParameter ControlID="hf_id_pytania" Name="IdPytania" PropertyName="Value" Type="Int32" />
+                <asp:ControlParameter ControlID="hf_id_pytania" Name="NumerPytania" PropertyName="Value" Type="Int32" />
             </SelectParameters>
+            <UpdateParameters>
+                <asp:Parameter Name="Tekst" Type="String" />
+                <asp:Parameter Name="Id" Type="Int32" />
+            </UpdateParameters>
+            <DeleteParameters>
+                <asp:Parameter Name="Id" Type="Int32" />
+            </DeleteParameters>
+            <InsertParameters>
+                <asp:Parameter Name="IdPytania" Type="Int32" />
+                <asp:Parameter Name="NumerPytania" Type="Int32" />
+                <asp:Parameter Name="Tekst" Type="String" />
+                <asp:Parameter Name="NumerOdpowiedzi" Type="Int32" />
+            </InsertParameters>
         </asp:SqlDataSource>
+
         <asp:HiddenField ID="hf_id_ankiety" runat="server" />
-        <asp:HiddenField ID="hf_id_pytania" runat="server" />
+        <asp:HiddenField ID="hf_id_pytania" runat="server" Value="1" />
     </div>
     </form>
 </body>

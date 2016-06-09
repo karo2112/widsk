@@ -88,7 +88,6 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:GridView ID="GridView2" runat="server"></asp:GridView>
     </div>
     </form>
 </body>

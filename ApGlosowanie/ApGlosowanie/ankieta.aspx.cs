@@ -147,6 +147,7 @@ namespace ApGlosowanie
                     i = dvSql.Count;
                 }
 
+            //error indeksu
             //nr,tresc,wielokr,wymagana odp
             this.lb_tresc_pytania.Text = "Pytanie " + dvSql[qIndex][0].ToString() + ". " + dvSql[qIndex][1].ToString();
 

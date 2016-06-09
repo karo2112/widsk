@@ -19,7 +19,7 @@ namespace ApGlosowanie
         {
             DataView dvSql = (DataView)this.sql_ds_ankiety.Select(DataSourceSelectArguments.Empty);
             String id_pytania = Convert.ToString(dvSql[this.gv_ankiety.SelectedIndex][0]);
-            Response.Redirect("~/ankieta.aspx?nr=" + id_pytania);
+            Response.Redirect("~/logowanie.aspx?r=~/ankieta.aspx?nr=" + id_pytania);//Response.Redirect("~/ankieta.aspx?nr=" + id_pytania);
         }
     }
 }

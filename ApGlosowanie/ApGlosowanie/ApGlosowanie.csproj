@@ -61,6 +61,7 @@
     <Content Include="default.aspx" />
     <Content Include="edytory\edycjaAnkiet.aspx" />
     <Content Include="edytory\edytorKont.aspx" />
+    <Content Include="logowanie.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +99,14 @@
     </Compile>
     <Compile Include="edytory\edytorKont.aspx.designer.cs">
       <DependentUpon>edytorKont.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="helpers\uwierzytelnianie.cs" />
+    <Compile Include="logowanie.aspx.cs">
+      <DependentUpon>logowanie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logowanie.aspx.designer.cs">
+      <DependentUpon>logowanie.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
