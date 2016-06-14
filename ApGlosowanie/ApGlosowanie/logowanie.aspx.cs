@@ -13,19 +13,46 @@ namespace ApGlosowanie
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            Response.Redirect(Request.QueryString["re"]);
+            
             /*
-            String redir = Request.QueryString["r"];
-            String login = Request.QueryString["l"];
-            String haslo = Request.QueryString["h"];
-            */
+            //rola, ktora wymaga strona
+            String rola = Request.QueryString["ro"];
+            if (rola == null)
+            {
+                Response.Redirect("~/default.aspx");
+            }
+
+            String id = "";
+            String kj = "";
+
+            String aa = Request.Cookies["daneLogowania"].ToString();
+            if (Request.Cookies["daneLogowania"] != null)
+            {
+                id = Request.Cookies["daneLogowania"]["id"];
+                kj = Request.Cookies["daneLogowania"]["kj"];
+            }
+
+            //jesli cookie niepopawny, zaloguj
+            //if(String.IsNullOrEmpty(id
             int a = 2;
+
+            //sprawdz czy jest cookie
+            //jesli jest to sprawdz kod jednorazowy
+            //jesli jest ok, to sprawdz, czy zwrocona rola jest zgodna z dopuszczalna dla strony
+
+            Uwierzytelnianie uw = new Uwierzytelnianie();
+
+            //if (Request.Cookies["DaneAnkiety"]["kj"] != null)
+            uw.CzyUzytkownikAutoryzowany(Convert.ToInt32(rola), Request.Cookies["daneLogowania"]["id"], Request.Cookies["daneLogowania"]["kj"]);
+
+            */
         }
+
+        
 
         protected void Zaloguj(String login, String haslo, String redir)
         {
-            //sprawdz, czy istnieje, jesli tak to zwroc jego role
-
-
             //na wszelki wypadek proba usuniecia pozostalych cookie
             HttpCookie myCookie = new HttpCookie("DaneAnkiety");
             myCookie.Expires = DateTime.Now.AddDays(-1d);//ile? 30 min?
@@ -43,6 +70,7 @@ namespace ApGlosowanie
 
             Uwierzytelnianie uw = new Uwierzytelnianie();
 
+            //sprawdz, czy istnieje, jesli tak to zwroc jego role
             int rola = uw.CzyUzytkownikIstnieje(login, haslo);
 
             if (rola > -1)
@@ -52,15 +80,25 @@ namespace ApGlosowanie
 
                 myCookie["ro"] = Convert.ToString(rola);
 
+                myCookie["id"] = login; 
+
                 Response.Cookies.Add(myCookie);
 
                 Response.Redirect(redir);
+            }
+            else
+            {
+                //przekieruj do? ankiety?
+                //wyswietl info??
+                Response.Redirect("~/ankiety.aspx");
             }
         }
 
         protected void bt_zaloguj_Click(object sender, EventArgs e)
         {
-            //this.Zaloguj(this.tb_login.Text, FormsAuthentication.HashPasswordForStoringInConfigFile(this.tb_haslo.Text, "SHA1"));
+            String redir = Request.QueryString["re"];
+
+            this.Zaloguj(this.tb_login.Text, FormsAuthentication.HashPasswordForStoringInConfigFile(this.tb_haslo.Text, "SHA1"), redir);
         }
     }
 }

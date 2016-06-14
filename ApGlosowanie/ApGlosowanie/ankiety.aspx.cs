@@ -18,8 +18,8 @@ namespace ApGlosowanie
         protected void gv_ankiety_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataView dvSql = (DataView)this.sql_ds_ankiety.Select(DataSourceSelectArguments.Empty);
-            String id_pytania = Convert.ToString(dvSql[this.gv_ankiety.SelectedIndex][0]);
-            Response.Redirect("~/logowanie.aspx?r=~/ankieta.aspx?nr=" + id_pytania);//Response.Redirect("~/ankieta.aspx?nr=" + id_pytania);
+            String id_ankiety = Convert.ToString(dvSql[this.gv_ankiety.SelectedIndex][0]);
+            Response.Redirect("~/logowanie.aspx?ro=0&re=~/ankieta.aspx?nr=" + id_ankiety);//Response.Redirect("~/ankieta.aspx?nr=" + id_pytania);
         }
     }
 }

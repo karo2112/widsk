@@ -22,6 +22,15 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// lb_wym_pytania control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lb_wym_pytania;
+        
+        /// <summary>
         /// sql_ds_pytania control.
         /// </summary>
         /// <remarks>
@@ -128,6 +137,15 @@ namespace ApGlosowanie {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button bt_skocz;
+        
+        /// <summary>
+        /// bt_zakoncz control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button bt_zakoncz;
         
         /// <summary>
         /// hf_nr_pytania control.

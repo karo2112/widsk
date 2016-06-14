@@ -45,5 +45,41 @@ namespace ApGlosowanie.helpers
 
             return -1;
         }
+
+        public bool CzyUzytkownikAutoryzowany(int rolaWymagana, String id, String kodJednorazowy)
+        {
+            try
+            {
+                con.Open();
+
+                SqlCommand cmd = con.CreateCommand();
+
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                cmd.CommandText = "SELECT COUNT(*) FROM Uzytkownicy WHERE Id = @Id AND KodJednorazowy = @KodJednorazowy AND Rola = @Rola";
+
+                cmd.Parameters.Add("Id", SqlDbType.NVarChar);
+                cmd.Parameters["Id"].Value = id;
+
+                cmd.Parameters.Add("KodJednorazowy", SqlDbType.NVarChar);
+                cmd.Parameters["KodJednorazowy"].Value = kodJednorazowy;
+
+                cmd.Parameters.Add("Rola", SqlDbType.Int);
+                cmd.Parameters["Rola"].Value = rolaWymagana;
+
+                Object wynik = cmd.ExecuteScalar();
+
+                if (wynik != null)
+                {
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+
+            }           
+
+            return false;
+        }
     }
 }

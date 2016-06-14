@@ -16,6 +16,7 @@
 
 <div>
     <h1>Lista ankiet</h1>
+        <asp:Label ID="lb_wym_pytania" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <asp:SqlDataSource ID="sql_ds_pytania" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [NumerPytania], [Pytanie], [WielWybor], [WymaganaOdp] FROM [Pytania] WHERE ([IdTestu] = @IdTestu) ORDER BY [NumerPytania] ASC">
             <SelectParameters>
@@ -23,10 +24,18 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
-        <asp:SqlDataSource ID="sql_ds_odpowiedzi" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT [Tekst], [NumerOdpowiedzi], [NumerPytania] FROM [Odpowiedzi] WHERE ([NumerPytania] = @NumerPytania) ORDER BY [NumerOdpowiedzi] ASC">
+        <asp:SqlDataSource ID="sql_ds_odpowiedzi" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" UpdateCommand="AktualizujLicznikOdpowiedzi" SelectCommand="SELECT o.Tekst, o.NumerOdpowiedzi, o.NumerPytania FROM Odpowiedzi o, Pytania p WHERE (o.NumerPytania = p.NumerPytania AND p.NumerPytania = @NumerPytania AND p.IdTestu = @IdTestu) ORDER BY [NumerOdpowiedzi] ASC" UpdateCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="hf_nr_pytania" Name="NumerPytania" PropertyName="Value" Type="Int32" />
+                <asp:QueryStringParameter DefaultValue="1" Name="IdTestu" QueryStringField="nr" Type="Int32" />
             </SelectParameters>
+
+            <UpdateParameters>
+                <asp:Parameter Name="NumerOdpowiedzi" Type="Int32" />
+                <asp:Parameter Name="NumerPytania" Type="Int32" />
+                <asp:QueryStringParameter Name="IdTestu" QueryStringField="nr" Type="Int32" />
+            </UpdateParameters>
+
         </asp:SqlDataSource>
         <br />
         <asp:Label ID="lb_tresc_pytania" runat="server" Text="Label"></asp:Label>
@@ -53,6 +62,8 @@
         <asp:Label ID="Label3" runat="server" Text="0"></asp:Label>
         <br />
         <asp:Button ID="bt_skocz" runat="server" OnClick="bt_skocz_Click" Text="Przejdź" />
+        <br />
+        <asp:Button ID="bt_zakoncz" runat="server" Text="Zakończ wypełnianie" OnClick="bt_zakoncz_Click" />
         <asp:HiddenField ID="hf_nr_pytania" runat="server" Value="1" />
     </div>
 
