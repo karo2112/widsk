@@ -11,7 +11,9 @@
     <div>
     <h1>Strona startowa programu do ankietowania</h1>
         <p>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/ankiety.aspx">HyperLink</asp:HyperLink>
+            <asp:Button ID="Button1" runat="server" Text="Zagłosuj" PostBackUrl="~/ankiety.aspx" />
+            <asp:Button ID="Button2" runat="server" Text="Edycja ankiet" PostBackUrl="~/edytory/edycjaAnkiet.aspx"/>
+            <asp:Button ID="Button3" runat="server" Text="Wyniki głosowań" PostBackUrl="~/podgladWynikow.aspx"/>
         </p>
     </div>
     </form>

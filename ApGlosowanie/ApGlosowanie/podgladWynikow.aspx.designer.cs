@@ -10,7 +10,7 @@
 namespace ApGlosowanie {
     
     
-    public partial class ankieta {
+    public partial class podgladWynikow {
         
         /// <summary>
         /// form1 control.
@@ -22,138 +22,102 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// lb_wym_pytania control.
+        /// podglad control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_wym_pytania;
+        protected global::System.Web.UI.WebControls.Table podglad;
         
         /// <summary>
-        /// sql_ds_pytania control.
+        /// podglAnkiet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_pytania;
+        protected global::System.Web.UI.WebControls.TableRow podglAnkiet;
         
         /// <summary>
-        /// sql_ds_odpowiedzi control.
+        /// gv_ankiety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_odpowiedzi;
+        protected global::System.Web.UI.WebControls.GridView gv_ankiety;
         
         /// <summary>
-        /// lb_tresc_pytania control.
+        /// bt_powrot_gl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_tresc_pytania;
+        protected global::System.Web.UI.WebControls.Button bt_powrot_gl;
         
         /// <summary>
-        /// lb_typ_pytania control.
+        /// podglWynikow control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lb_typ_pytania;
+        protected global::System.Web.UI.WebControls.TableRow podglWynikow;
         
         /// <summary>
-        /// RadioButtonList1 control.
+        /// gv_wyniki_ankiety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RadioButtonList1;
+        protected global::System.Web.UI.WebControls.GridView gv_wyniki_ankiety;
         
         /// <summary>
-        /// CheckBoxList1 control.
+        /// menu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList CheckBoxList1;
+        protected global::System.Web.UI.WebControls.TableRow menu;
         
         /// <summary>
-        /// Button1 control.
+        /// bt_powrot control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button bt_powrot;
         
         /// <summary>
-        /// Button2 control.
+        /// sql_ds_ankiety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_ankiety;
         
         /// <summary>
-        /// Button3 control.
+        /// sql_ds_wyniki_ankiety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_wyniki_ankiety;
         
         /// <summary>
-        /// ddl_pytania control.
+        /// id_ankiety control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_pytania;
-        
-        /// <summary>
-        /// Label3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-        
-        /// <summary>
-        /// bt_skocz control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt_skocz;
-        
-        /// <summary>
-        /// bt_zakoncz control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bt_zakoncz;
-        
-        /// <summary>
-        /// hf_nr_pytania control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hf_nr_pytania;
+        protected global::System.Web.UI.WebControls.HiddenField id_ankiety;
     }
 }

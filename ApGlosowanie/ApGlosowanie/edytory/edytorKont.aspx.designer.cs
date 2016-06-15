@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ApGlosowanie {
+namespace ApGlosowanie.edytor {
     
     
-    public partial class ankiety {
+    public partial class edytorKont {
         
         /// <summary>
         /// form1 control.
@@ -22,21 +22,30 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// gv_ankiety control.
+        /// tb_dodawanie_wiersza control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv_ankiety;
+        protected global::System.Web.UI.WebControls.Table tb_dodawanie_wiersza;
         
         /// <summary>
-        /// sql_ds_ankiety control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_ankiety;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+        
+        /// <summary>
+        /// sql_ds_uzytkownicy control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_uzytkownicy;
     }
 }
