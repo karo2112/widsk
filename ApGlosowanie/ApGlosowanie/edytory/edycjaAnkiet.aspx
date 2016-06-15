@@ -18,7 +18,7 @@
 
                 <asp:TableRow ID="tbl_ankiety">
                     <asp:TableCell>
-                        <asp:GridView ID="gv_ankiety" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sql_ds_ankiety" EnableModelValidation="True" ShowFooter="True" OnRowUpdating="gv_ankiety_RowUpdating" OnSelectedIndexChanged="gv_ankiety_SelectedIndexChanged" OnRowEditing="gv_ankiety_RowEditing" OnRowCancelingEdit="gv_ankiety_RowCancelingEdit" OnRowUpdated="gv_ankiety_RowUpdated">
+                        <asp:GridView ID="gv_ankiety" runat="server" OnRowDeleting="gv_ankiety_RowDeleting" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="sql_ds_ankiety" EnableModelValidation="True" ShowFooter="True" OnRowUpdating="gv_ankiety_RowUpdating" OnSelectedIndexChanged="gv_ankiety_SelectedIndexChanged" OnRowEditing="gv_ankiety_RowEditing" OnRowCancelingEdit="gv_ankiety_RowCancelingEdit" OnRowUpdated="gv_ankiety_RowUpdated">
                             <Columns>
                                 <asp:TemplateField ShowHeader="False">
                                     <EditItemTemplate>
@@ -66,12 +66,7 @@
                                         <asp:Label ID="Label3" runat="server" Text='<%# Bind("Stan") %>'></asp:Label>
                                     </ItemTemplate>
                                     <FooterTemplate>
-                                        <asp:DropDownList ID="ddl_stan_ankiety_ins" runat="server">
-                                            <asp:ListItem Text="Nieaktywna" Value="0"></asp:ListItem>
-                                            <asp:ListItem Text="Aktywna" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="C" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="D" Value="3"></asp:ListItem>
-                                        </asp:DropDownList>
+
                                     </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="DataZakonczenia" SortExpression="DataZakonczenia">
@@ -288,7 +283,7 @@
 
                 <asp:TableRow ID="tbl_pytania">
                     <asp:TableCell>
-                        <asp:GridView ID="gv_pytania" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" DataSourceID="sql_ds_pytania" EnableModelValidation="True" OnSelectedIndexChanged="gv_pytania_SelectedIndexChanged" ShowFooter="True" OnRowUpdating="gv_pytania_RowUpdating">
+                        <asp:GridView ID="gv_pytania" runat="server" DataKeyNames="Id" AutoGenerateColumns="False" OnRowDeleting="gv_pytania_RowDeleting" DataSourceID="sql_ds_pytania" EnableModelValidation="True" OnSelectedIndexChanged="gv_pytania_SelectedIndexChanged" ShowFooter="True" OnRowUpdating="gv_pytania_RowUpdating">
                             <EmptyDataTemplate>
                                 <asp:Label ID="lb_pusty_w" runat="server" Text="Nie ma pytań, proszę dodać conajmniej jedno."></asp:Label><br />
                                 <asp:Button ID="bt_dodaj_pytanie_p" runat="server" Text="Dodaj pytanie" OnClick="dodajPytanie_e" />
@@ -452,7 +447,7 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:SqlDataSource ID="sql_ds_pytania" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" SelectCommand="SELECT Id, IdTestu, Pytanie, WielWybor, NumerPytania, WymaganaOdp FROM Pytania WHERE ([IdTestu] = @IdTestu)" UpdateCommand="UPDATE [Pytania] SET [Pytanie] = @Pytanie, [WielWybor] = @WielWybor, [WymaganaOdp] = @WymaganaOdp WHERE [Id] = @Id" DeleteCommand="UsunPytanie" DeleteCommandType="StoredProcedure" InsertCommand="INSERT INTO [Pytania] ([IdTestu], [Pytanie], [WielWybor], [NumerPytania], [WymaganaOdp]) VALUES (@IdTestu, @Pytanie, @WielWybor, @NumerPytania, @WymaganaOdp)">
+            <asp:SqlDataSource ID="sql_ds_pytania" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" OnDeleting="sql_ds_pytania_Deleting" SelectCommand="SELECT Id, IdTestu, Pytanie, WielWybor, NumerPytania, WymaganaOdp FROM Pytania WHERE ([IdTestu] = @IdTestu)" UpdateCommand="UPDATE [Pytania] SET [Pytanie] = @Pytanie, [WielWybor] = @WielWybor, [WymaganaOdp] = @WymaganaOdp WHERE [Id] = @Id" DeleteCommand="UsunPytanie" DeleteCommandType="StoredProcedure" InsertCommand="INSERT INTO [Pytania] ([IdTestu], [Pytanie], [WielWybor], [NumerPytania], [WymaganaOdp]) VALUES (@IdTestu, @Pytanie, @WielWybor, @NumerPytania, @WymaganaOdp)">
                 <SelectParameters>
                     <asp:Parameter Name="IdTestu" Type="Int32" />
                 </SelectParameters>
@@ -474,7 +469,7 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-            <asp:SqlDataSource ID="sql_ds_ankiety" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" DeleteCommand="UsunAnkiete" DeleteCommandType="StoredProcedure"  InsertCommand="INSERT INTO [Ankiety] ([Nazwa], [Stan], [DataZakonczenia]) VALUES (@Nazwa, @Stan, @DataZakonczenia)" SelectCommand="SELECT Id, Nazwa, Stan, DataZakonczenia, Stan as Godzina, Stan as Minuta FROM Ankiety
+            <asp:SqlDataSource ID="sql_ds_ankiety" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" OnDeleting="sql_ds_odpowiedzi_Deleting" DeleteCommand="UsunAnkiete" DeleteCommandType="StoredProcedure"  InsertCommand="INSERT INTO [Ankiety] ([Nazwa], [Stan], [DataZakonczenia]) VALUES (@Nazwa, @Stan, @DataZakonczenia)" SelectCommand="SELECT Id, Nazwa, Stan, DataZakonczenia, Stan as Godzina, Stan as Minuta FROM Ankiety
 UNION ALL
 SELECT -1,'PUSTA, NIE DO EDYCJI',0,GETDATE(),0,0 FROM Ankiety HAVING COUNT(*)=0;"
                 UpdateCommand="UPDATE [Ankiety] SET [Nazwa] = @Nazwa, [Stan] = @Stan, [DataZakonczenia] = @DataZakonczenia WHERE [Id] = @Id">

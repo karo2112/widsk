@@ -128,7 +128,8 @@ namespace ApGlosowanie.edytor
         {
             //dodawanie parametrow
             this.sql_ds_ankiety.InsertParameters["Nazwa"].DefaultValue = ((TextBox)this.gv_ankiety.FooterRow.FindControl("tb_nazwa_ankiety")).Text;
-            this.sql_ds_ankiety.InsertParameters["Stan"].DefaultValue = ((DropDownList)this.gv_ankiety.FooterRow.FindControl("ddl_stan_ankiety_ins")).SelectedValue;
+            //nowa ankieta zawsze ma 0 - jest nieaktywna
+            this.sql_ds_ankiety.InsertParameters["Stan"].DefaultValue = Convert.ToString(0);// ((DropDownList)this.gv_ankiety.FooterRow.FindControl("ddl_stan_ankiety_ins")).SelectedValue;
 
             //sklejanie daty z godzina i minutami
             String godzina = ((DropDownList)this.gv_ankiety.FooterRow.FindControl("ddl_godzina")).SelectedValue;
@@ -263,6 +264,28 @@ namespace ApGlosowanie.edytor
         protected void gv_odpowiedzi_RowDeleted(object sender, GridViewDeletedEventArgs e)
         {
             this.tbl_pytania.Visible = false;
+        }
+
+        protected void gv_ankiety_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            this.sql_ds_ankiety.DeleteParameters["IdAnkiety"].DefaultValue = Convert.ToString(e.Keys["Id"]);
+        }
+
+        //jedyna droga aby obejsc ten blad z > 1 parametrami...
+        protected void sql_ds_odpowiedzi_Deleting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+            e.Command.Parameters.RemoveAt(1);
+        }
+
+        protected void gv_pytania_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            this.sql_ds_pytania.DeleteParameters["IdPytania"].DefaultValue = Convert.ToString(e.Keys["Id"]);
+        }
+
+        //jedyna droga aby obejsc ten blad z > 1 parametrami...
+        protected void sql_ds_pytania_Deleting(object sender, SqlDataSourceCommandEventArgs e)
+        {
+            e.Command.Parameters.RemoveAt(1);
         }
     }
 }
