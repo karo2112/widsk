@@ -17,6 +17,7 @@ namespace ApGlosowanie
             //Response.Redirect(Request.QueryString["re"]);
             
             
+            
             //rola, ktora wymaga strona
             String rola = Request.QueryString["ro"];
             //przekierowanie
@@ -37,6 +38,8 @@ namespace ApGlosowanie
                 id = Request.Cookies["daneLogowania"]["id"];
                 kj = Request.Cookies["daneLogowania"]["kj"];
             }
+            
+
 
             /*
             //jesli cookie niepopawny, zaloguj

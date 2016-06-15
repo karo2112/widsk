@@ -58,8 +58,8 @@
                                         <asp:DropDownList ID="ddl_stan_ankiety_edit" runat="server" SelectedValue='<%# Bind("Stan") %>'>
                                             <asp:ListItem Text="Nieaktywna" Value="0"></asp:ListItem>
                                             <asp:ListItem Text="Aktywna" Value="1"></asp:ListItem>
-                                            <asp:ListItem Text="C" Value="2"></asp:ListItem>
-                                            <asp:ListItem Text="D" Value="3"></asp:ListItem>
+                                            <asp:ListItem Text="Zakończona" Value="2"></asp:ListItem>
+                                            <asp:ListItem Text="Anulowana" Value="3"></asp:ListItem>
                                         </asp:DropDownList>
                                     </EditItemTemplate>
                                     <ItemTemplate>

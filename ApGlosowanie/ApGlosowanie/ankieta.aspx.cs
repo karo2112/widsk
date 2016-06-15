@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ApGlosowanie.helpers;
 
 namespace ApGlosowanie
 {
@@ -32,6 +33,11 @@ namespace ApGlosowanie
             //...
 
             //sprawdz, czy uzytkownik nie wypelnil juz tej ankiety
+            if(Request.Cookies["daneLogowania"] == null || Request.Cookies["daneLogowania"]["id"] == null)
+            {
+                Response.Redirect("~/ankiety.aspx");
+            }
+
             this.sql_ds_wypeln_ankiety.SelectParameters["IdUzytkownika"].DefaultValue = Request.Cookies["daneLogowania"]["id"];
             //this.sql_ds_wypeln_ankiety.Select(
             //jest cookie? jesli nie, to utworz, z numerem pytania 1
@@ -172,7 +178,11 @@ namespace ApGlosowanie
             }
 
             //sprobuj zaktualizowac
-            this.ddl_pytania.SelectedValue = this.hf_nr_pytania.Value;
+            //jesli nie ma takiego pytania - jest nieciagla numeracja, to nic nie rob
+            if(this.ddl_pytania.Items.Contains(new ListItem(this.hf_nr_pytania.Value)))
+            {
+                this.ddl_pytania.SelectedValue = this.hf_nr_pytania.Value;
+            }
 
             //wymagana odpowiedz
             if (Convert.ToBoolean(dvSql[qIndex][3].ToString()))
@@ -184,7 +194,6 @@ namespace ApGlosowanie
                 this.lb_typ_pytania.Text = "To pytanie nie wymaga odpowiedzi.";
             }
 
-            this.Label3.Text = dvSql[qIndex][0] + "|" + dvSql[qIndex][1] + "|" + dvSql[qIndex][2] + "|" + dvSql[qIndex][3];
         }
 
         protected void ZapiszOdpowiedzDoCookie()
@@ -438,10 +447,23 @@ namespace ApGlosowanie
                 return;
             }
 
-            //sprawdz kod jednorazowy??
+            
+            if (Request.Cookies["daneLogowania"] == null || Request.Cookies["daneLogowania"]["ro"] == null || Request.Cookies["daneLogowania"]["id"] == null || Request.Cookies["daneLogowania"]["kj"] == null)
+            {
+                Response.Redirect("~/ankiety.aspx");
+            }
+            //sprawdz kod jednorazowy, czy autoryzowany
+            Uwierzytelnianie uw = new Uwierzytelnianie();
+            if(uw.CzyUzytkownikAutoryzowany(Convert.ToInt32(Request.Cookies["daneLogowania"]["ro"]), Request.Cookies["daneLogowania"]["id"], Request.Cookies["daneLogowania"]["kj"]))
+            {
 
-            this.UaktualnijLiczniki(pytOdp);
+                this.UaktualnijLiczniki(pytOdp);
 
+                //zaznacz, ze ta osoba nie moze juz wiecej wypelniac danej ankiety
+
+
+                //usun cookie
+            }
             //przekieruj do listy ankiet czy do glownego?
             //na razie do listy ankiet
             Response.Redirect("~/ankiety.aspx");

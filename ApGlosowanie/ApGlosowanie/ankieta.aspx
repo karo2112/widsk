@@ -59,7 +59,6 @@
                         <div>
                             <asp:DropDownList ID="ddl_pytania" runat="server" DataSourceID="sql_ds_pytania" DataTextField="NumerPytania" DataValueField="NumerPytania" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
                             </asp:DropDownList>
-                            <asp:Label ID="Label3" runat="server" Text="0"></asp:Label>
                             <br />
                             <asp:Button ID="bt_skocz" runat="server" OnClick="bt_skocz_Click" Text="Przejdź" />
                             <br />
