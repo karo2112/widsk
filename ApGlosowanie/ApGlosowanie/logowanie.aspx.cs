@@ -27,17 +27,18 @@ namespace ApGlosowanie
                 Response.Redirect("~/default.aspx");
             }
 
-            /*
+            
             String id = "";
             String kj = "";
 
-            String aa = Request.Cookies["daneLogowania"].ToString();
+            //String aa = Request.Cookies["daneLogowania"].ToString();
             if (Request.Cookies["daneLogowania"] != null)
             {
                 id = Request.Cookies["daneLogowania"]["id"];
                 kj = Request.Cookies["daneLogowania"]["kj"];
             }
 
+            /*
             //jesli cookie niepopawny, zaloguj
             //if(String.IsNullOrEmpty(id
             int a = 2;
@@ -85,7 +86,12 @@ namespace ApGlosowanie
 
                 myCookie["ro"] = Convert.ToString(rola);
 
-                myCookie["id"] = login; 
+                myCookie["id"] = login;
+
+                String kodJednorazowy = FormsAuthentication.HashPasswordForStoringInConfigFile(login + haslo, "SHA1");
+                myCookie["kj"] = kodJednorazowy;
+
+                uw.UstawKodJednorazowy(login, kodJednorazowy);
 
                 Response.Cookies.Add(myCookie);
 

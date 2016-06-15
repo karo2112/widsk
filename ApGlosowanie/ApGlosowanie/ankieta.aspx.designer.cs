@@ -148,6 +148,15 @@ namespace ApGlosowanie {
         protected global::System.Web.UI.WebControls.Button bt_zakoncz;
         
         /// <summary>
+        /// sql_ds_wypeln_ankiety control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource sql_ds_wypeln_ankiety;
+        
+        /// <summary>
         /// hf_nr_pytania control.
         /// </summary>
         /// <remarks>

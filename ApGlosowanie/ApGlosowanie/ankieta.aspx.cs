@@ -21,13 +21,19 @@ namespace ApGlosowanie
         protected System.Collections.Specialized.NameValueCollection paryAkt;
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {            
             //jesli nie podano numeru ankiety
             if (Request.QueryString["nr"] == null)
             {
                 Response.Redirect("~/ankiety.aspx");
             }
 
+            //czy autoryzowany??
+            //...
+
+            //sprawdz, czy uzytkownik nie wypelnil juz tej ankiety
+            this.sql_ds_wypeln_ankiety.SelectParameters["IdUzytkownika"].DefaultValue = Request.Cookies["daneLogowania"]["id"];
+            //this.sql_ds_wypeln_ankiety.Select(
             //jest cookie? jesli nie, to utworz, z numerem pytania 1
 
             this.hf_nr_pytania.Value = Convert.ToString(this.WczytajAktywnePytanieZCookie());

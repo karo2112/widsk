@@ -64,6 +64,16 @@
                             <asp:Button ID="bt_skocz" runat="server" OnClick="bt_skocz_Click" Text="Przejdź" />
                             <br />
                             <asp:Button ID="bt_zakoncz" runat="server" Text="Zakończ wypełnianie" OnClick="bt_zakoncz_Click" />
+                            <asp:SqlDataSource ID="sql_ds_wypeln_ankiety" runat="server" ConnectionString="<%$ ConnectionStrings:cs_glosowanie %>" InsertCommand="INSERT INTO WypelnioneAnkiety(IdTestu, IdUzytkownika) VALUES (@IdTestu, @IdUzytkownika)" SelectCommand="SELECT * FROM [WypelnioneAnkiety] WHERE (([IdTestu] = @IdTestu) AND ([IdUzytkownika] = @IdUzytkownika))">
+                                <InsertParameters>
+                                    <asp:QueryStringParameter Name="IdTestu" QueryStringField="nr" />
+                                    <asp:Parameter Name="IdUzytkownika" />
+                                </InsertParameters>
+                                <SelectParameters>
+                                    <asp:QueryStringParameter Name="IdTestu" QueryStringField="nr" />
+                                    <asp:Parameter Name="IdUzytkownika" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                             <asp:HiddenField ID="hf_nr_pytania" runat="server" Value="1" />
                         </div>
 

@@ -48,6 +48,7 @@ namespace ApGlosowanie.edytor
             dataZakonczenia = dataZakonczenia.AddHours(Convert.ToInt32(godzina));
             dataZakonczenia = dataZakonczenia.AddMinutes(Convert.ToInt32(minuta));
 
+            //tu moze byc blad??
             e.NewValues["DataZakonczenia"] = dataZakonczenia.ToString();
 
             //tu sprawdzenie, czy mozna wstawic...
@@ -199,9 +200,20 @@ namespace ApGlosowanie.edytor
             this.tbl_odpowiedzi.Visible = true;
         }
 
+        protected void gv_odpowiedzi_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //podanie parametrow do update'a
+            this.sql_ds_odpowiedzi.UpdateParameters["Id"].DefaultValue = Convert.ToString(e.Keys["Id"]);
+            this.sql_ds_odpowiedzi.UpdateParameters["Tekst"].DefaultValue = Convert.ToString(((TextBox)this.gv_odpowiedzi.Rows[e.RowIndex].FindControl("tb_tekst_e")).Text);
+        }
+
         protected void gv_pytania_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            int a = 2;
+            //podanie parametrow do update'a
+            this.sql_ds_pytania.UpdateParameters["Id"].DefaultValue = Convert.ToString(e.Keys["Id"]);
+            this.sql_ds_pytania.UpdateParameters["WielWybor"].DefaultValue = Convert.ToString(((CheckBox)this.gv_pytania.Rows[e.RowIndex].FindControl("chb_wiel_wybor_e")).Checked);
+            this.sql_ds_pytania.UpdateParameters["WymaganaOdp"].DefaultValue = Convert.ToString(((CheckBox)this.gv_pytania.Rows[e.RowIndex].FindControl("chb_wym_odp_e")).Checked);
+            this.sql_ds_pytania.UpdateParameters["Pytanie"].DefaultValue = Convert.ToString(((TextBox)this.gv_pytania.Rows[e.RowIndex].FindControl("tb_pytanie_e")).Text);
         }
 
         protected void bt_main_OnClick(object sender, EventArgs e)
@@ -231,6 +243,26 @@ namespace ApGlosowanie.edytor
             this.tbl_odpowiedzi.Visible = true;
             this.tbl_pytania.Visible = false;
             this.tbl_ankiety.Visible = false;
+        }
+
+        protected void gv_odpowiedzi_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            this.tbl_pytania.Visible = false;
+        }
+
+        protected void gv_odpowiedzi_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            this.tbl_pytania.Visible = false;
+        }
+
+        protected void gv_odpowiedzi_RowUpdated(object sender, GridViewUpdatedEventArgs e)
+        {
+            this.tbl_pytania.Visible = false;
+        }
+
+        protected void gv_odpowiedzi_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            this.tbl_pytania.Visible = false;
         }
     }
 }
